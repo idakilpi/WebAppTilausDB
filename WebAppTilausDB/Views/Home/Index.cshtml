@@ -1,0 +1,193 @@
+﻿@{
+    ViewBag.Title = "Etusivu";
+}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+
+<div class="jumbotron">
+
+    <header>
+        <div class="p-5 text-center bg-image" style=" background-image: url('https://cdn.pixabay.com/photo/2019/03/13/13/25/grocery-4052896_960_720.jpg'); height: 400px; margin-top: 58px; ">
+            <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+                <div class="d-flex justify-content-center align-items-center h-100">
+                    <div class="text-white">
+                        <h1 class="mb-3">Tilaussovellus</h1>
+                        <h4 class="mb-3">Sivun alhaalla linkit</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+</div>
+
+<main class="my-5">
+    <div class="container">
+
+        <section>
+
+            <div id="intro" class="p-5 text-center bg-light shadow-5 rounded-5 mb-5">
+                <h1 class="mb-3 h2">Tämä on yrityksemme etusivu</h1>
+                <p class="mb-3">Ruokatilaus sovellus</p>
+                <a class="btn btn-primary m-2" href="~/Home/Login" role="button" rel="nofollow"
+                   target="_blank">Kirjaudu sisään</a>
+            </div>
+
+        </section>
+
+        <section class="text-center">
+            <h4 class="mb-5"><strong>Linkit</strong></h4>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-12 mb-4">
+                    <div class="card">
+                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                            <img src="https://cdn.pixabay.com/photo/2018/11/12/19/41/icon-3811591_960_720.png"style="height:300px; width:100%; display:block;" class="img-fluid" />
+                            <a href="#!">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Tuotteet</h5>
+                            <p class="card-text">
+                                Täältä löydät tuotevalikoiman.
+                            </p>
+                            <a class="nav-link" href="~/Tuotteet/Index">
+                                Tuotelista</a>
+                                
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card">
+                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                            <img src="https://cdn.pixabay.com/photo/2022/06/22/08/59/shopping-7277456_960_720.png" style="height:300px; width:100%; display:block;"class="img-fluid" />
+                            <a href="#!">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Asiakkaat</h5>
+                            <p class="card-text">
+                                Täältä löydät asiakastiedot.
+                            </p>
+                            <a class="nav-link" href="~/Asiakkaat/Index">Asiakaslista</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card">
+                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                            <img src="https://cdn.pixabay.com/photo/2017/11/10/04/47/letter-2935365_960_720.png" style="height:300px; width:100%; display:block;" class="img-fluid" />
+                            <a href="#!">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Postitoimipaikat</h5>
+                            <p class="card-text">
+                                Täältä löydät postitoimipaikat.
+                            </p>
+                            <a class="nav-link" href="~/Postitoimipaikat/Index">Postitoimipaikkalista</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-12 mb-4">
+                    <div class="card">
+                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                            <img src="https://cdn.pixabay.com/photo/2017/02/16/13/42/box-2071537_960_720.png" style="height:300px; width:100%; display:block;" class="img-fluid" />
+                           
+                            <a href="#!">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Tilaukset</h5>
+                            <p class="card-text">
+                                Täältä löydät tilaukset.
+                            </p>
+                            <a class="nav-link" href="~/Tilaukset/Index">Tilauslista</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card">
+                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                            <img src="https://cdn.pixabay.com/photo/2017/06/10/07/24/note-2389227_960_720.png" style="height:300px; width:100%; display:block;"class="img-fluid" />
+                                 <a href="#!">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Tilausrivit</h5>
+                            <p class="card-text">
+                                Täältä löydät tilausrivit.
+                            </p>
+                            <a class="nav-link" href="~/Tilausrivit/Index">Tilausrivit</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card">
+                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                            <img src="https://cdn.pixabay.com/photo/2016/11/30/18/14/chat-1873536_960_720.png" style="height:300px; width:100%; display:block;" class="img-fluid" />
+                            <a href="#!">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Yhteystiedot</h5>
+                            <p class="card-text">
+                               Täältä löydät yrityksemme yhteystiedot.
+                            </p>
+                            <a class="nav-link" href="~/Home/Contact">Yhteystiedot</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+<footer class="bg-dark text-center text-white">
+
+    <div class="container p-4 pb-0">
+
+        <section class="mb-4">
+
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                <i class="bi bi-facebook"></i>
+            </a>
+
+
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                <i class="bi bi-twitter"></i>
+            </a>
+
+
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                <i class="bi bi-google"></i>
+            </a>
+
+
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                <i class="bi bi-instagram"></i>
+            </a>
+
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                <i class="bi bi-linkedin"></i>
+            </a>
+        </section>
+    </div>
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2023
+    </div>
+</footer>
+

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WebAppTilausDB.Models.Tilaukset>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<header>
+
+    <div class="p-5 text-center bg-light">
+        <h1 class="mb-3">Tilaukset</h1>
+        <h4 class="mb-3">Tilauslistat</h4>
+        <p>
+            @Html.ActionLink("Uusi tilaus", "Create", new { }, new { @class = "btn btn-primary" })
+        </p>
+    </div>
+
+</header>
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Toimitusosoite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tilauspvm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Toimituspvm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Asiakkaat.Nimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Postitoimipaikat.Postitoimipaikka)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Toimitusosoite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tilauspvm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Toimituspvm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Asiakkaat.Nimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Postitoimipaikat.Postitoimipaikka)
+        </td>
+        <td>
+            @Html.ActionLink("Muokkaa", "Edit", new { id=item.TilausID }) |
+            @Html.ActionLink("Poista", "Delete", new { id=item.TilausID })
+        </td>
+    </tr>
+}
+
+</table>

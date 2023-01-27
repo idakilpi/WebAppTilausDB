@@ -1,0 +1,66 @@
+﻿@model IEnumerable<WebAppTilausDB.Models.Tilausrivit>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<header>
+
+    <div class="p-5 text-center bg-light">
+        <h1 class="mb-3">Tilausrivit</h1>
+        <h4 class="mb-3">Täältä löydät tilausrivit</h4>
+        <p>
+            @Html.ActionLink("Uusi tilausrivi", "Create", new { }, new { @class = "btn btn-primary" })
+        </p>
+    </div>
+
+</header>
+
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Maara)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ahinta)
+        </th>
+        <th>
+            Yhteensä
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tilaukset.Toimitusosoite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tuotteet.Nimi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Maara)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ahinta)
+        </td>
+        <td>
+            @{ var yhteensa = item.Ahinta * item.Maara;}
+            @yhteensa.ToString()
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tilaukset.Toimitusosoite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tuotteet.Nimi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.TilausriviID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.TilausriviID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.TilausriviID })
+        </td>
+    </tr>
+}
+
+</table>

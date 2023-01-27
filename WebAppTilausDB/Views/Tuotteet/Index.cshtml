@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WebAppTilausDB.Models.Tuotteet>
+@{
+    ViewBag.Title = "Tuotteet";
+}
+
+<div class="container-fluid">
+    <header>
+
+        <div class="p-5 text-center bg-light">
+            <h1 class="mb-3">Tuotteet</h1>
+            <h4 class="mb-3">Tuotevalikoima</h4>
+            <p>
+                @Html.ActionLink("Luo uusi tuote", "Create", new { }, new { @class = "btn btn-primary" })
+            </p>
+        </div>
+
+    </header>
+
+    <div class="row">
+        @foreach (WebAppTilausDB.Models.Tuotteet tuot in Model)
+        {
+            <div class="col-lg-3">
+                <div class="card mb-3">
+                    <h3 class="card-header">@tuot.Nimi</h3>
+                    @*<div class="card-body">
+                        <h5 class="card-title">@tuot.TuoteId</h5>
+                        </div>*@
+                    <img style="height:200px; width:100%; display:block;" src="@tuot.Image" alt="@tuot.Image">
+                    @*<div class="card-body">
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>*@
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">@tuot.Ahinta</li>
+                    </ul>
+                    <div class="card-body">
+                        @Html.ActionLink("Muokkaa", "Edit", new { id = tuot.TuoteID })
+                        @Html.ActionLink("Poista", "Delete", new { id = tuot.TuoteID })
+                    </div>
+                    @*<div class="card-footer text-muted">
+                            2 days ago
+                        </div>*@
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
