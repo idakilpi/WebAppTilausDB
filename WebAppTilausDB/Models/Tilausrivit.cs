@@ -18,6 +18,7 @@ namespace WebAppTilausDB.Models
         public int TilausriviID { get; set; }
         public Nullable<int> TilausID { get; set; }
         public Nullable<int> TuoteID { get; set; }
+
         [Display(Name = "M‰‰r‰")]
         public Nullable<int> Maara { get; set; }
 

@@ -134,13 +134,13 @@
     <Compile Include="Controllers\PostitoimipaikatController.cs" />
     <Compile Include="Controllers\TilauksetController.cs" />
     <Compile Include="Controllers\TilausrivitController.cs" />
-    <Compile Include="Models\Asiakkaat.cs">
-      <DependentUpon>TilausDBModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TuotteetController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Asiakkaat.cs">
+      <DependentUpon>TilausDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Henkilot.cs">
       <DependentUpon>TilausDBModel.tt</DependentUpon>
@@ -151,10 +151,16 @@
     <Compile Include="Models\Postitoimipaikat.cs">
       <DependentUpon>TilausDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Tilaukset.cs">
       <DependentUpon>TilausDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Tilausrivit.cs">
+      <DependentUpon>TilausDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tuotteet.cs">
+      <DependentUpon>TilausDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\TilausDBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -170,12 +176,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TilausDBModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Tilausrivit.cs">
-      <DependentUpon>TilausDBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Tuotteet.cs">
-      <DependentUpon>TilausDBModel.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -190,6 +190,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\WebAppTilausDB - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

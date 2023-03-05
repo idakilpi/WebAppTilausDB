@@ -28,6 +28,10 @@ namespace WebAppTilausDB.Controllers
 
         public ActionResult Details(string id)
         {
+            if (Session["UserName"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -63,6 +67,10 @@ namespace WebAppTilausDB.Controllers
 
         public ActionResult Edit(string id)
         {
+            if (Session["UserName"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -91,6 +99,10 @@ namespace WebAppTilausDB.Controllers
 
         public ActionResult Delete(string id)
         {
+            if (Session["UserName"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             Postitoimipaikat postitoimipaikat = db.Postitoimipaikat.Find(id);
             if (postitoimipaikat == null) return HttpNotFound();

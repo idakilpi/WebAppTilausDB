@@ -43,6 +43,10 @@ namespace WebAppTilausDB.Controllers
         // GET: Tilausrivit/Create
         public ActionResult Create()
         {
+            if (Session["UserName"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             ViewBag.TilausID = new SelectList(db.Tilaukset, "TilausID", "Toimitusosoite");
             ViewBag.TuoteID = new SelectList(db.Tuotteet, "TuoteID", "Nimi");
             return View();
@@ -70,6 +74,10 @@ namespace WebAppTilausDB.Controllers
         // GET: Tilausrivit/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["UserName"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -105,6 +113,10 @@ namespace WebAppTilausDB.Controllers
         // GET: Tilausrivit/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (Session["UserName"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

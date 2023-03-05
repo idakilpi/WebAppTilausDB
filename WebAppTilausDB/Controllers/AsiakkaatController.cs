@@ -106,6 +106,10 @@ namespace WebAppTilausDB.Controllers
 
         public ActionResult Delete(int? id)
         {
+            if (Session["UserName"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
