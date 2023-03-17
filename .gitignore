@@ -361,3 +361,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Ignore these files
+.config
+/WebAppTilausDB/Web.Release.config
+/WebAppTilausDB/Web.Debug.config
+/WebAppTilausDB/Web.config
