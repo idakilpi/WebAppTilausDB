@@ -12,38 +12,17 @@ namespace WebAppTilausDB.Controllers
         TilausDBEntities db = new TilausDBEntities();
         public ActionResult Index()
         {
-            if (Session["UserName"] == null)
-            {
-                ViewBag.LoggedStatus = "Out";
-                return RedirectToAction("Login");
-            }
-            else ViewBag.LoggedStatus = "In";
             return View();
         }
 
         public ActionResult About()
         {
-            if (Session["UserName"] == null)
-            {
-                return RedirectToAction("Login");
-            }
-
-            else ViewBag.Message = "Your application description page.";
             return View();
         }
 
         public ActionResult Contact()
         {
-            if (Session["UserName"] == null)
-            {
-                return RedirectToAction("Login");
-            }
-            else
-            {
-                ViewBag.Message = "Your contact page.";
-                ViewBag.LoggedStatus = "In";
                 return View();
-            }
         }
         public ActionResult Login()
         {
@@ -58,6 +37,7 @@ namespace WebAppTilausDB.Controllers
             {
                 ViewBag.LoginMessage = "Successfull login";
                 ViewBag.LoggedStatus = "In";
+                ViewBag.LoginError = 0;
                 Session["UserName"] = LoggedUser.UserName;
                 return RedirectToAction("Index", "Home"); 
             }
@@ -65,8 +45,9 @@ namespace WebAppTilausDB.Controllers
             {
                 ViewBag.LoginMessage = "Login unsuccessfull";
                 ViewBag.LoggedStatus = "Out";
+                ViewBag.LoginError = 1;
                 LoginModel.LoginErrorMessage = "Tuntematon käyttäjätunnus tai salasana.";
-                return View("Login", LoginModel);
+                return View("Index", LoginModel);
             }
         }
         public ActionResult LogOut()

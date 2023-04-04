@@ -1,8 +1,17 @@
-﻿@{
+﻿@model WebAppTilausDB.Models.Logins
+@{
     ViewBag.Title = "Etusivu";
 }
 
-
+@section scripts {
+    <script type="text/javascript">
+        $(window).on('load', function () { if
+        (@ViewBag.LoginError == 1) {
+        $('#LoginRuutu').modal('show');
+        }
+        });
+    </script>
+}
 
 <div class="jumbotron">
 
@@ -29,8 +38,9 @@
             <div id="intro" class="p-5 text-center bg-light shadow-5 rounded-5 mb-5">
                 <h1 class="mb-3 h2">Tämä on yrityksemme etusivu</h1>
                 <p class="mb-3">Ruokatilaus sovellus</p>
-                <a class="btn btn-primary m-2" href="~/Home/Login" role="button" rel="nofollow"
-                   target="_blank">Kirjaudu sisään</a>
+                <ul>
+                    <li class="btn btn-primary"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#LoginRuutu">Kirjaudu sisään</a></li>
+                </ul>
             </div>
 
         </section>
@@ -42,7 +52,7 @@
                 <div class="col-lg-4 col-md-12 mb-4">
                     <div class="card">
                         <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                            <img src="https://cdn.pixabay.com/photo/2018/11/12/19/41/icon-3811591_960_720.png"style="height:300px; width:100%; display:block;" class="img-fluid" />
+                            <img src="https://cdn.pixabay.com/photo/2018/11/12/19/41/icon-3811591_960_720.png" style="height:300px; width:100%; display:block;" class="img-fluid" />
                             <a href="#!">
                                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                             </a>
@@ -53,8 +63,9 @@
                                 Täältä löydät tuotevalikoiman.
                             </p>
                             <a class="nav-link" href="~/Tuotteet/Index">
-                                Tuotelista</a>
-                                
+                                Tuotelista
+                            </a>
+
                         </div>
                     </div>
                 </div>
@@ -62,7 +73,7 @@
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card">
                         <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                            <img src="https://cdn.pixabay.com/photo/2022/06/22/08/59/shopping-7277456_960_720.png" style="height:300px; width:100%; display:block;"class="img-fluid" />
+                            <img src="https://cdn.pixabay.com/photo/2022/06/22/08/59/shopping-7277456_960_720.png" style="height:300px; width:100%; display:block;" class="img-fluid" />
                             <a href="#!">
                                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                             </a>
@@ -101,7 +112,7 @@
                     <div class="card">
                         <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                             <img src="https://cdn.pixabay.com/photo/2017/02/16/13/42/box-2071537_960_720.png" style="height:300px; width:100%; display:block;" class="img-fluid" />
-                           
+
                             <a href="#!">
                                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                             </a>
@@ -119,8 +130,8 @@
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card">
                         <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                            <img src="https://cdn.pixabay.com/photo/2017/06/10/07/24/note-2389227_960_720.png" style="height:300px; width:100%; display:block;"class="img-fluid" />
-                                 <a href="#!">
+                            <img src="https://cdn.pixabay.com/photo/2017/06/10/07/24/note-2389227_960_720.png" style="height:300px; width:100%; display:block;" class="img-fluid" />
+                            <a href="#!">
                                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                             </a>
                         </div>
@@ -145,7 +156,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Yhteystiedot</h5>
                             <p class="card-text">
-                               Täältä löydät yrityksemme yhteystiedot.
+                                Täältä löydät yrityksemme yhteystiedot.
                             </p>
                             <a class="nav-link" href="~/Home/Contact">Yhteystiedot</a>
                         </div>
@@ -156,4 +167,7 @@
     </div>
 </main>
 
+@{
+    Html.RenderPartial("_LoginModal");
+}
 
