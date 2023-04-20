@@ -176,6 +176,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TilausDBModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModelss\TilausrivitModel.cs" />
+    <Compile Include="ViewModelss\TilausSummaryData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -264,6 +266,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
