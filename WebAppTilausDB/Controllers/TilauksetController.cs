@@ -170,17 +170,30 @@ namespace WebAppTilausDB.Controllers
 
             return View(orderSummary);
         }
-        public ActionResult OrdersPerWeekday()
+        public ActionResult OrdersPerWeek()
         {
             var ordersByDayOfWeek = db.Tilaukset
-                .GroupBy(o => DbFunctions.DiffDays(new DateTime(1900, 1, 1), o.Tilauspvm) % 7)
-                .Select(g => new {
-                    DayOfWeek = g.Key,
-                    Count = g.Count()
-                })
-                .OrderBy(g => g.DayOfWeek);
+                .GroupBy(t => DbFunctions.DiffDays(new DateTime(1900, 1, 1), t.Tilauspvm) % 7)
+                .Select(g => new { DayOfWeek = g.Key, OrderCount = g.Count() })
+                .OrderBy(o => o.DayOfWeek)
+                .ToList();
 
-            return View(ordersByDayOfWeek);
+            var daysOfWeek = Enum.GetValues(typeof(DayOfWeek))
+                .Cast<DayOfWeek>()
+                .Select(d => d.ToString())
+                .ToList();
+
+            var orderCounts = Enumerable.Repeat(0, daysOfWeek.Count).ToList();
+
+            foreach (var order in ordersByDayOfWeek)
+            {
+                orderCounts[(int)order.DayOfWeek] = order.OrderCount;
+            }
+
+            ViewBag.DaysOfWeek = daysOfWeek;
+            ViewBag.OrderCounts = orderCounts;
+
+            return View();
         }
         public ActionResult OrderLines(int id)
         {

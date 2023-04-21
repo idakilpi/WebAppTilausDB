@@ -1,19 +1,38 @@
-﻿@model IEnumerable<dynamic>
+﻿@{
+    ViewBag.Title = "OrdersPerWeek";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
-<table>
-    <thead>
-        <tr>
-            <th>Viikonpäivä</th>
-            <th>Tilausten määrä</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Weekday.ToString()</td>
-                <td>@item.OrderCount</td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div>
+    <canvas id="ordersChart" width="800" height="400"></canvas>
+</div>
+
+@section scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+    <script>
+        var daysOfWeek = @Html.Raw(Json.Encode(ViewBag.DaysOfWeek));
+        var orderCounts = @Html.Raw(Json.Encode(ViewBag.OrderCounts));
+
+        var ctx = document.getElementById('ordersChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: daysOfWeek,
+                datasets: [{
+                    label: 'Orders per day of week',
+                    data: orderCounts,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+}
