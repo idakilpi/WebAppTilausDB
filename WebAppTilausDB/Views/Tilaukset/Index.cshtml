@@ -3,9 +3,22 @@
 @{
     ViewBag.Title = "Index";
 }
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
 
+    $('.header').click(function () {
+        $(this).next('.content').find('.tilausrivi').toggle();
+    });
+</script>
+<style>
+    #accordion .content {
+        display: none;
+    }
 
-
+    #accordion .active .content {
+        display: block;
+    }
+</style>
 <header>
 
     <div class="p-5 text-center bg-light">
@@ -18,48 +31,60 @@
         @Html.ActionLink("Tilaus yhteenveto", "Ordersummary")
     </p>
 </header>
-<table class="table table-hover">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Toimitusosoite)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tilauspvm)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Toimituspvm)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Asiakkaat.Nimi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Postitoimipaikat.Postitoimipaikka)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Toimitusosoite)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tilauspvm)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Toimituspvm)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Asiakkaat.Nimi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Postitoimipaikat.Postitoimipaikka)
-        </td>
-        <td>
-            @Html.ActionLink("Muokkaa", "Edit", new { id=item.TilausID }) |
-            @Html.ActionLink("Poista", "Delete", new { id=item.TilausID })
-        </td>
-    </tr>
-}
-
-</table>
+<div id="accordion">
+    @foreach (var item in Model)
+    {
+        <div class="section">
+            <div class="header">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Tilaus ID: @Html.DisplayFor(modelItem => item.TilausID)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Toimitusosoite)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Tilauspvm)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Toimituspvm)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Asiakkaat.Nimi)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Postitoimipaikat.Postitoimipaikka)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td>@Html.DisplayFor(modelItem => item.Toimitusosoite)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Tilauspvm)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Toimituspvm)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Asiakkaat.Nimi)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Postitoimipaikat.Postitoimipaikka)</td>
+                            <td>
+                                @Html.ActionLink("Muokkaa", "Edit", new { id = item.TilausID }) |
+                                @Html.ActionLink("Poista", "Delete", new { id = item.TilausID })
+                            </td>
+                        </tr>
+                        @foreach (var tilausrivi in item.Tilausrivit)
+                        {
+                            <tr class="tilausrivi">
+                                <td>@Html.DisplayFor(modelItem => tilausrivi.Tuotteet.Nimi)</td>
+                                <td>@Html.DisplayFor(modelItem => tilausrivi.Maara)</td>
+                                <td>@Html.DisplayFor(modelItem => tilausrivi.Ahinta)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+      
+    }
+    </div>
