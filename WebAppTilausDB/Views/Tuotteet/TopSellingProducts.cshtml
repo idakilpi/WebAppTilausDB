@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>My Chart Page</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <canvas id="myChart"></canvas>
+    <script>
+        var jsonData = [{ "ProductName": "Vadelma", "TotalPrice": 40.00 }, { "ProductName": "Maito", "TotalPrice": 6.00 }, { "ProductName": "Mansikkahillo", "TotalPrice": 3.00 }];
+        var productNames = [];
+        var totalPrices = [];
+
+        for (var i = 0; i < jsonData.length; i++) {
+            productNames.push(jsonData[i].ProductName);
+            totalPrices.push(jsonData[i].TotalPrice);
+        }
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: productNames,
+                datasets: [{
+                    label: 'Total Sales',
+                    data: totalPrices,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+</body>
+</html>

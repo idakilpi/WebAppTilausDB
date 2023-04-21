@@ -1,0 +1,21 @@
+﻿@model IEnumerable<WebAppTilausDB.Models.Tilausrivit>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tuote</th>
+            <th>Määrä</th>
+            <th>A hinta</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tilausrivi in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => tilausrivi.Tuotteet.Nimi)</td>
+                <td>@Html.DisplayFor(modelItem => tilausrivi.Maara)</td>
+                <td>@Html.DisplayFor(modelItem => tilausrivi.Ahinta)</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -196,6 +196,8 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\WebAppTilausDB - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\chart.js" />
+    <Content Include="Scripts\chart.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -269,6 +271,9 @@
     <Content Include="Views\Tilausrivit\OrderLineSummary.cshtml" />
     <Content Include="Views\Postitoimipaikat\PostSummary.cshtml" />
     <Content Include="Views\Asiakkaat\AsiakkaatSummary.cshtml" />
+    <Content Include="Views\Tilaukset\OrdersPerWeek.cshtml" />
+    <Content Include="Views\Tuotteet\TopSellingProducts.cshtml" />
+    <Content Include="Views\Tilaukset\_OrderLines.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

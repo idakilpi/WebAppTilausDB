@@ -170,5 +170,22 @@ namespace WebAppTilausDB.Controllers
 
             return View(orderSummary);
         }
+        public ActionResult OrdersPerWeekday()
+        {
+            var ordersByDayOfWeek = db.Tilaukset
+                .GroupBy(o => DbFunctions.DiffDays(new DateTime(1900, 1, 1), o.Tilauspvm) % 7)
+                .Select(g => new {
+                    DayOfWeek = g.Key,
+                    Count = g.Count()
+                })
+                .OrderBy(g => g.DayOfWeek);
+
+            return View(ordersByDayOfWeek);
+        }
+        public ActionResult OrderLines(int id)
+        {
+            var order = db.Tilaukset.Include("Tilausrivit.Tuotteet").SingleOrDefault(x => x.TilausID == id);
+            return PartialView("_OrderLines", order);
+        }
     }
 }

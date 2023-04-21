@@ -111,5 +111,19 @@ namespace WebAppTilausDB.Controllers
 
             return PartialView("_ProductDetails", model);
         }
+        public JsonResult TopSellingProducts()
+        {
+            var top10Products = (from tilausrivi in db.Tilausrivit
+                                 group tilausrivi by tilausrivi.TuoteID into tuotteet
+                                 join tuote in db.Tuotteet on tuotteet.FirstOrDefault().TuoteID equals tuote.TuoteID
+                                 orderby tuotteet.Sum(x => x.Ahinta * x.Maara) descending
+                                 select new
+                                 {
+                                     ProductName = tuote.Nimi,
+                                     TotalPrice = tuotteet.Sum(x => x.Ahinta * x.Maara)
+                                 }).Take(10);
+
+            return Json(top10Products, JsonRequestBehavior.AllowGet);
+        }
     }
 }

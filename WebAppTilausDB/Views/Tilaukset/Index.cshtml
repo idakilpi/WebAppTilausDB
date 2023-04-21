@@ -5,9 +5,11 @@
 }
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-
-    $('.header').click(function () {
-        $(this).next('.content').find('.tilausrivi').toggle();
+    $(document).ready(function () {
+        $('.header').click(function () {
+            $(this).toggleClass('active');
+            $(this).next('.content').slideToggle(500);
+        });
     });
 </script>
 <style>
@@ -26,6 +28,9 @@
         <p>
             @Html.ActionLink("Uusi tilaus", "Create", new { }, new { @class = "btn btn-primary" })
         </p>
+        <ul>
+            <li>@Html.ActionLink("Tilaukset viikonpäivittäin", "OrdersPerWeek")</li>
+        </ul>
     </div>
     <p>
         @Html.ActionLink("Tilaus yhteenveto", "Ordersummary")
@@ -73,18 +78,12 @@
                                 @Html.ActionLink("Poista", "Delete", new { id = item.TilausID })
                             </td>
                         </tr>
-                        @foreach (var tilausrivi in item.Tilausrivit)
-                        {
-                            <tr class="tilausrivi">
-                                <td>@Html.DisplayFor(modelItem => tilausrivi.Tuotteet.Nimi)</td>
-                                <td>@Html.DisplayFor(modelItem => tilausrivi.Maara)</td>
-                                <td>@Html.DisplayFor(modelItem => tilausrivi.Ahinta)</td>
-                            </tr>
-                        }
                     </tbody>
                 </table>
             </div>
+            <div class="content">
+                @{Html.RenderPartial("_OrderLines", item.Tilausrivit);}
+            </div>
         </div>
-      
     }
-    </div>
+</div>

@@ -1,0 +1,19 @@
+﻿@model IEnumerable<dynamic>
+
+<table>
+    <thead>
+        <tr>
+            <th>Viikonpäivä</th>
+            <th>Tilausten määrä</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Weekday.ToString()</td>
+                <td>@item.OrderCount</td>
+            </tr>
+        }
+    </tbody>
+</table>
