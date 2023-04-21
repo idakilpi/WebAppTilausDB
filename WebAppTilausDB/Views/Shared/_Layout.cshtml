@@ -29,28 +29,33 @@
                             <span class="visually-hidden">(current)</span>
                         </a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="~/Home/Contact">Meistä</a>
-                    </li>              
-                    <li class="nav-item">
-                        <a class="nav-link" href="~/Tuotteet/Index">Tuotteet</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="~/Asiakkaat/Index/" role="button" aria-haspopup="true" aria-expanded="false">Asiakkaat</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="~/Postitoimipaikat/Index">Postitoimipaikat</a>
-                            <div class="dropdown-divider">
+                    @if (Session["UserName"] != null)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="~/Tuotteet/Index">Tuotteet</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="~/Asiakkaat/Index/" role="button" aria-haspopup="true" aria-expanded="false">Asiakkaat</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="~/Postitoimipaikat/Index">Postitoimipaikat</a>
+                                <div class="dropdown-divider">
+                                </div>
                             </div>
-                        </div>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Tilaukset</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="~/Tilaukset/Index">Tilaukset</a>
-                            <a class="dropdown-item" href="~/Tilausrivit/Index">Tilausrivit</a>
-                            <div class="dropdown-divider">
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Tilaukset</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="~/Tilaukset/Index">Tilaukset</a>
+                                <a class="dropdown-item" href="~/Tilausrivit/Index">Tilausrivit</a>
+                                <div class="dropdown-divider">
+                                </div>
                             </div>
-                        </div>
-                    </li>
+                        </li>
+                    }
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="modal" data-bs-target="#LoginRuutu">Kirjaudu</a>
                     </li>
@@ -60,12 +65,12 @@
                             <a class="nav-link" href="~/Home/Logout">Ulos</a>
                         </li>
                     }
-                </ul>                    
+                </ul>
                 <form class="d-flex">
                     <input class="form-control me-sm-2" type="search" placeholder="Search">
                     <button class="btn btn-secondary my-2 my-sm-0" type="submit">Hae</button>
                 </form>
-              </div>
+            </div>
             <div>
           </div>
         </div>
