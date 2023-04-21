@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebAppTilausDB.Models;
+using WebAppTilausDB.ViewModels;
 
 namespace WebAppTilausDB.Controllers
 {
@@ -118,6 +119,17 @@ namespace WebAppTilausDB.Controllers
             db.Postitoimipaikat.Remove(postitoimipaikat);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        public ActionResult PostSummary()
+        {
+            var postiSummary = from o in db.Postitoimipaikat
+                               select new PostiSummary
+                               {
+                                   Postinumero = o.Postinumero,
+                                   Postitoimipaikka = o.Postitoimipaikka
+                               };
+
+            return View(postiSummary);
         }
     }
 }

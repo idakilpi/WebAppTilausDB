@@ -1,1 +1,32 @@
-﻿
+﻿@model WebAppTilausDB.Models.Tuotteet
+
+
+<div class="modal fade" id="productDetailsModal" display="none" tabindex="-1" role="dialog" aria-labelledby="productDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" style="background-color: #fff;">
+            <div class="modal-header">
+                <h4 class="modal-title">@Model.Nimi</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <dl class="dl-horizontal">
+                            <dt>@Html.DisplayNameFor(model => model.TuoteID)</dt>
+                            <dd>@Html.DisplayFor(model => model.TuoteID)</dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-6">
+                        <dl class="dl-horizontal">
+                            <dt>@Html.DisplayNameFor(model => model.Ahinta)</dt>
+                            <dd>@Html.DisplayFor(model => model.Ahinta)</dd>
+
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="@Url.Action("Index", "Tuotteet")" class="btn btn-primary" data-dismiss="modal">Sulje</a>
+            </div>
+        </div>
+    </div>
+</div>

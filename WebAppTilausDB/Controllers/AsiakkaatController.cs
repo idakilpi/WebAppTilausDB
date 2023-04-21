@@ -6,6 +6,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebAppTilausDB.Models;
+using WebAppTilausDB.ViewModels;
 
 namespace WebAppTilausDB.Controllers
 {
@@ -129,6 +130,18 @@ namespace WebAppTilausDB.Controllers
             db.Asiakkaat.Remove(asiakkaat);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        public ActionResult AsiakkaatSummary()
+        {
+            var asiakkaatSummary = from a in db.Asiakkaat
+                               select new AsiakkaatSummary
+                               {
+                                AsiakasID = a.AsiakasID,
+                                Nimi = a.Nimi,     
+                                Osoite = a.Osoite,
+                                Postinumero = a.Postinumero
+                                };
+            return View(asiakkaatSummary);
         }
     }
 }

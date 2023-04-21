@@ -92,5 +92,24 @@ namespace WebAppTilausDB.Controllers
             }
             return View(tuote);
         }
+        public ActionResult ProductDetails(int id)
+        {
+            var product = db.Tuotteet.FirstOrDefault(p => p.TuoteID == id);
+
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+
+            var model = new Tuotteet()
+            {
+                TuoteID = product.TuoteID,
+                Nimi = product.Nimi,
+                Ahinta = product.Ahinta,
+                Image = product.Image
+            };
+
+            return PartialView("_ProductDetails", model);
+        }
     }
 }

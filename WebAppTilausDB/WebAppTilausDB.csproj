@@ -176,6 +176,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TilausDBModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AsiakkaatSummary.cs" />
+    <Compile Include="ViewModels\OrderLineSummary.cs" />
+    <Compile Include="ViewModels\OrderSummaryData.cs" />
+    <Compile Include="ViewModels\PostiSummary.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -261,6 +265,10 @@
     <Content Include="Views\Shared\NavbarLoggedOut.cshtml" />
     <Content Include="Views\Home\_LoginModal.cshtml" />
     <Content Include="Views\Tuotteet\_ProductDetails.cshtml" />
+    <Content Include="Views\Tilaukset\OrderSummary.cshtml" />
+    <Content Include="Views\Tilausrivit\OrderLineSummary.cshtml" />
+    <Content Include="Views\Postitoimipaikat\PostSummary.cshtml" />
+    <Content Include="Views\Asiakkaat\AsiakkaatSummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

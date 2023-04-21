@@ -4,16 +4,19 @@
     ViewBag.Title = "Index";
 }
 
+
+
 <header>
 
     <div class="p-5 text-center bg-light">
         <h1 class="mb-3">Tilaukset</h1>
-        <h4 class="mb-3">Tilauslistat</h4>
         <p>
             @Html.ActionLink("Uusi tilaus", "Create", new { }, new { @class = "btn btn-primary" })
         </p>
     </div>
-
+    <p>
+        @Html.ActionLink("Tilaus yhteenveto", "Ordersummary")
+    </p>
 </header>
 <table class="table table-hover">
     <tr>

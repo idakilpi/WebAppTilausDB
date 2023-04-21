@@ -9,12 +9,13 @@
 
     <div class="p-5 text-center bg-light">
         <h1 class="mb-3">Tilausrivit</h1>
-        <h4 class="mb-3">Täältä löydät tilausrivit</h4>
         <p>
             @Html.ActionLink("Uusi tilausrivi", "Create", new { }, new { @class = "btn btn-primary" })
         </p>
     </div>
-
+    <p>
+        @Html.ActionLink("Tilausrivit yhteenveto", "OrderLineSummary")
+    </p>
 </header>
 
 <table class="table table-hover">

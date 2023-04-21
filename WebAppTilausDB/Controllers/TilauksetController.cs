@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebAppTilausDB.Models;
+using WebAppTilausDB.ViewModels;
 
 namespace WebAppTilausDB.Controllers
 {
@@ -152,6 +153,22 @@ namespace WebAppTilausDB.Controllers
                                                           };
             ViewBag.Postinumero = new SelectList(selectPostiList, "Value", "Text", tilaukset.Postinumero);
             return View(tilaukset);
+        }
+
+        public ActionResult OrderSummary()
+        {
+            var orderSummary = from o in db.Tilaukset
+                               join c in db.Asiakkaat on o.AsiakasID equals c.AsiakasID
+                               select new OrderSummaryData
+                               {
+                                   TilausID = o.TilausID,
+                                   AsiakasID = c.AsiakasID,
+                                   Tilauspvm = (DateTime)o.Tilauspvm,
+                                   ToimitusPvm = (DateTime)o.Toimituspvm,
+                                   Nimi = c.Nimi
+                               };
+
+            return View(orderSummary);
         }
     }
 }

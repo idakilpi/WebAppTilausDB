@@ -1,0 +1,33 @@
+﻿@model IEnumerable<WebAppTilausDB.ViewModels.PostiSummary>
+
+@{
+    ViewBag.Title = "PostSummary";
+}
+
+<h2>Postitoimipaikat yhteenveto</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Postitoimipaikka)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Postinumero)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Postitoimipaikka)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Postinumero)
+            </td>
+        </tr>
+    }
+
+</table>

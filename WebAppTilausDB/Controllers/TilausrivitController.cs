@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebAppTilausDB.Models;
+using WebAppTilausDB.ViewModels;
 
 namespace WebAppTilausDB.Controllers
 {
@@ -147,6 +148,20 @@ namespace WebAppTilausDB.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult OrderLineSummary()
+        {
+            var orderSummary = from o in db.Tilausrivit
+                               join p in db.Tuotteet on o.TuoteID equals p.TuoteID
+                               select new OrderLineSummary
+                               {
+                                   TilausriviID = o.TilausriviID,
+                                   TuoteID= o.TuoteID,
+                                   Maara = o.Maara,
+                                   Ahinta = p.Ahinta
+                               };
+
+            return View(orderSummary);
         }
     }
 }

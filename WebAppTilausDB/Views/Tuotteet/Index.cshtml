@@ -17,6 +17,9 @@
         });
     }
 </script>
+
+<div id="productDetailsModalContent"></div>
+
 <div class="container-fluid">
     <header>
 
@@ -37,24 +40,23 @@
                 <div class="card mb-3">
                     <h3 class="card-header">@tuot.Nimi</h3>
                     @*<div class="card-body">
-        <h5 class="card-title">@tuot.TuoteId</h5>
-        </div>*@
+                    <h5 class="card-title">@tuot.TuoteId</h5>
+                    </div>*@
                     <img style="height:200px; width:100%; display:block;" src="@tuot.Image" alt="@tuot.Image">
                     @*<div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>*@
-
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>*@
                     <button type="button" class="btn btn-primary btn-details" onclick="showProductDetails(@tuot.TuoteID)">Katso lisätiedot</button>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">@tuot.Ahinta</li>
-                    </ul>
-                    <div class="card-body">
-                        @Html.ActionLink("Muokkaa", "Edit", new { id = tuot.TuoteID })
-                        @Html.ActionLink("Poista", "Delete", new { id = tuot.TuoteID })
-                    </div>
-                    @*<div class="card-footer text-muted">
-            2 days ago
-        </div>*@
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">@tuot.Ahinta</li>
+                        </ul>
+                        <div class="card-body">
+                            @Html.ActionLink("Muokkaa", "Edit", new { id = tuot.TuoteID })
+                            @Html.ActionLink("Poista", "Delete", new { id = tuot.TuoteID })
+                        </div>
+                        @*<div class="card-footer text-muted">
+                2 days ago
+            </div>*@
                 </div>
             </div>
         }
