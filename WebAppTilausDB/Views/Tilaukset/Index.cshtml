@@ -4,14 +4,8 @@
     ViewBag.Title = "Index";
 }
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('.header').click(function () {
-            $(this).toggleClass('active');
-            $(this).next('.content').slideToggle(500);
-        });
-    });
-</script>
+
+
 <style>
     #accordion .content {
         display: none;
@@ -21,6 +15,16 @@
         display: block;
     }
 </style>
+
+<script>
+    $(document).ready(function () {
+        $('.header').click(function () {
+            $(this).toggleClass('active');
+            $(this).next('.content').slideToggle(500);
+        });
+    });
+</script>
+
 <header>
 
     <div class="p-5 text-center bg-light">

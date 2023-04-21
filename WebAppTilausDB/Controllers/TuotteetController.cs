@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -111,7 +112,7 @@ namespace WebAppTilausDB.Controllers
 
             return PartialView("_ProductDetails", model);
         }
-        public JsonResult TopSellingProducts()
+        public ActionResult TopSellingProducts()
         {
             var top10Products = (from tilausrivi in db.Tilausrivit
                                  group tilausrivi by tilausrivi.TuoteID into tuotteet
@@ -121,9 +122,25 @@ namespace WebAppTilausDB.Controllers
                                  {
                                      ProductName = tuote.Nimi,
                                      TotalPrice = tuotteet.Sum(x => x.Ahinta * x.Maara)
-                                 }).Take(10);
+                                 }).Take(10).ToList();
 
-            return Json(top10Products, JsonRequestBehavior.AllowGet);
+            var chartData = new
+            {
+                labels = top10Products.Select(p => p.ProductName),
+                datasets = new[] {
+                new {
+                label = "Top 10 selling products",
+                data = top10Products.Select(p => p.TotalPrice),
+                backgroundColor = "rgba(75,192,192,0.4)",
+                borderColor = "rgba(75,192,192,1)",
+                borderWidth = 1
+                }   
+                }   
+            };
+
+            ViewBag.ChartData = JsonConvert.SerializeObject(chartData);
+
+            return View();
         }
     }
 }
