@@ -26,15 +26,14 @@
 </script>
 
 <header>
-
     <div class="p-5 text-center bg-light">
         <h1 class="mb-3">Tilaukset</h1>
         <p>
             @Html.ActionLink("Uusi tilaus", "Create", new { }, new { @class = "btn btn-primary" })
         </p>
         <ul>
-            <li>@Html.ActionLink("Tilaukset viikonpäivittäin", "OrdersPerWeek")</li>
-        </ul>
+           <li>@Html.ActionLink("Tilaukset viikonpäivittäin", "OrdersPerWeek")</li>
+      </ul>
     </div>
     <p>
         @Html.ActionLink("Tilaus yhteenveto", "Ordersummary")

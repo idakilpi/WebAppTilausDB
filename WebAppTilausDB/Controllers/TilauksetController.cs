@@ -157,6 +157,10 @@ namespace WebAppTilausDB.Controllers
 
         public ActionResult OrderSummary()
         {
+            if (Session["UserName"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             var orderSummary = from o in db.Tilaukset
                                join c in db.Asiakkaat on o.AsiakasID equals c.AsiakasID
                                select new OrderSummaryData
@@ -172,6 +176,10 @@ namespace WebAppTilausDB.Controllers
         }
         public ActionResult OrdersPerWeek()
         {
+            if (Session["UserName"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             var ordersByDayOfWeek = db.Tilaukset
                 .GroupBy(t => DbFunctions.DiffDays(new DateTime(1900, 1, 1), t.Tilauspvm) % 7)
                 .Select(g => new { DayOfWeek = g.Key, OrderCount = g.Count() })
@@ -197,6 +205,10 @@ namespace WebAppTilausDB.Controllers
         }
         public ActionResult OrderLines(int id)
         {
+            if (Session["UserName"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             var order = db.Tilaukset.Include("Tilausrivit.Tuotteet").SingleOrDefault(x => x.TilausID == id);
             return PartialView("_OrderLines", order);
         }

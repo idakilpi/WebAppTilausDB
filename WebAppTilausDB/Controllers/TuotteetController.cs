@@ -114,6 +114,10 @@ namespace WebAppTilausDB.Controllers
         }
         public ActionResult TopSellingProducts()
         {
+            if (Session["UserName"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             var top10Products = (from tilausrivi in db.Tilausrivit
                                  group tilausrivi by tilausrivi.TuoteID into tuotteet
                                  join tuote in db.Tuotteet on tuotteet.FirstOrDefault().TuoteID equals tuote.TuoteID

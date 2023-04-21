@@ -151,6 +151,10 @@ namespace WebAppTilausDB.Controllers
         }
         public ActionResult OrderLineSummary()
         {
+            if (Session["UserName"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             var orderSummary = from o in db.Tilausrivit
                                join p in db.Tuotteet on o.TuoteID equals p.TuoteID
                                select new OrderLineSummary
